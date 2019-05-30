@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Prerequisite (one time only):
+    Install groovy and set GROOVY_HOME system property
+    Install ant and set ANT_HOME system property
+    Update system path with GROOVY_HOME and ANT_HOME
+  USAGE: 
+    CD to folder containing this build.xml file
+    run command: ant groovydoc
+-->
+<project name="Kena" default="all" basedir=".">
+   <description>Robots Emporium Keywords</description>
+   <property environment="env"/>
+   <property name="GROOVY_HOME" value="${env.GROOVY_HOME}" />
+   <property name="src.dir" value=".\Keywords" />
+   <property name="dest.dir" value=".\groovydoc" />
+  <taskdef name="groovydoc" classname="org.codehaus.groovy.ant.Groovydoc">
+    <classpath>
+      <fileset dir="${GROOVY_HOME}" includes="lib/groovy-*.jar,lib/ivy*.jar"/>
+    </classpath>
+  </taskdef>
+
+  <target name="groovydoc" description="Generate Groovydoc-based documentation">
+    <groovydoc destdir="${dest.dir}"
+      sourcepath="${src.dir}"
+      packagenames="**.*"
+      use="true"
+      windowtitle="Robots Keywords"
+      doctitle="Robots Emporium Keywords"
+      header="Kena Robots Emporium Keywords"
+      footer="Automation @2019"
+      private="false">
+    </groovydoc>
+  </target>
+  
+</project>
