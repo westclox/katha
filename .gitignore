@@ -1,0 +1,6 @@
+/bin
+/Libs
+/Reports
+.settings
+settings/internal/com.kms.katalon.composer.testcase.properties
+/groovydoc
